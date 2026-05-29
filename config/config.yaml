@@ -1,0 +1,21 @@
+artifacts_root: artifacts
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  kaggle_dataset_slug: "rohitpravinlohar/fingerprint-dataset-for-blood-group-classification"
+  unzip_dir: artifacts/data_ingestion/extracted_data
+  zip_file_name: fingerprint_data.zip
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_path: "artifacts/data_ingestion/extracted_data/Fingerprint Dataset for Blood Group Classification"
+  batch_size: 32
+  image_size: [128, 128]
+
+model_trainer:
+  root_dir: artifacts/model_trainer
+  trained_model_path: artifacts/model_trainer/model.pth
+  class_names_path: models/classes.json
+  epochs: 10
+  learning_rate: 0.001
+  device: "cuda" # Set to "cuda" or "gpu" to utilize NVIDIA GPU acceleration

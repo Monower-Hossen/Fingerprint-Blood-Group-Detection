@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fingerprint Blood Group Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Fingerprint Blood Group Detection</h1>
+        <p>Upload a fingerprint image to predict the blood group.</p>
+        
+        <!-- Placeholder for file upload form -->
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*">
+            <input type="submit" value="Predict Blood Group">
+        </form>
+
+        <div class="result-area">
+            {% if result %}
+                <h2>Predicted Blood Group: <span class="blood-group">{{ result }}</span></h2>
+                <img src="{{ image_path }}" alt="Uploaded Fingerprint" class="preview-img">
+            {% elif error %}
+                <p class="error-msg">{{ error }}</p>
+            {% else %}
+                <p>No prediction yet. Please upload an image.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
